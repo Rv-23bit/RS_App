@@ -9,10 +9,10 @@ import difflib
 
 app = Flask(__name__)
 
-df = pd.read_csv("RS_App_Media/datasets/tmdb.csv")
+df = pd.read_csv("datasets/tmdb.csv")
 df.drop("Unnamed: 0",axis=1,inplace=True)
 df = df.reset_index()
-df_1 = pd.read_csv("Rs_App_Media/datasets/credits_processed.csv")
+df_1 = pd.read_csv("datasets/credits_processed.csv")
 
 #Fetching Runtime of every movie as adding a column in df
 df['runtime'] = df['runtime'].astype(str)
