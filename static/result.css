@@ -1,0 +1,153 @@
+:droot {
+    --primary-color: #22254b;
+    --secondary-color: #373b69;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* .reimg{
+    height: 200px;
+    width: 100px;
+    border:5px solid black;
+    padding-top: 100px;
+} */
+
+.movie {
+    background: black;
+    color: white;
+    width: 98%;
+    height: 100vh;
+    width: 800px;
+    height: 370px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.55);
+    /* font-size: 30px;
+     position: relative;
+    text-align: justify;
+     border-radius: 25px;
+     box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+     background-color: transparent;
+    padding: 20px; */
+}
+
+/* .movie:hover{
+    
+    box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.55);
+     /* position: relative;
+    text-align: justify;
+     border-radius: 25px;
+     box-shadow: 20px 20px 20px rgba(0,0,0,0.1);
+     background-color:  #5B5958;
+     color: #CFCDCC  ; 
+     border: 2px solid #CFCDCC  ; } */
+
+.movie img {
+    /* width:200px;
+    height:300px; */
+    border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 0 0 10px;
+    -moz-border-radius: 10px 0 0 10px;
+    position: relative;
+}
+
+.movie-info {
+    width: 80%;
+    height: auto;
+    border-radius: 10px 0 0 10px;
+    -webkit-border-radius: 10px 0 0 10px;
+    -moz-border-radius: 10px 0 0 10px;
+    /* position:fixed; */
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    /* padding:0 40px 0 40px; */
+    letter-spacing: 1px;
+    margin: 10px 0 10px 0;
+    line-height: 20px;
+}
+
+/* .ovr{
+    color:white;
+    font-family: 'Montserrat', sans-serif;
+    font-size:12px;
+    padding:0 40px 0 40px;
+    letter-spacing:1px;
+    margin:10px 0 10px 0;
+    line-height:20px;
+} */
+
+.movie-info span {
+    background-color: var(--primary-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.movie-info span.green {
+    color: lightgreen;
+}
+
+.movie-info span.blue {
+    color: blue;
+}
+
+.movie-info span.red {
+    color: red;
+}
+
+.know-more {
+    background-color: orange;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 50px;
+    padding: 10px 20px;
+    margin-top: 5px;
+}
+
+.reimg img{
+    height:95%;
+    width:95%; 
+    border-radius:25px;
+    box-shadow:0px 10px 10px 0px;
+     border: 5px solid black;
+    
+} 
+[title]:hover{
+    display: block;
+    position: absolute;
+}
+
+.reimg i{
+    top:60%;
+    left:40%;
+    z-index:1;
+    position:absolute;
+    visibility:hidden;
+    font-size:60px;
+    color:black;
+    text-align: center;
+}
+
+ .reimg:hover i{
+    visibility: visible;
+  
+} 
+
+ .reimg:hover img{
+    opacity: 0.6;
+  
+} 

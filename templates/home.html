@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation System by Innovation Geeks</title>
+    <link rel="shortcut icon" href="..\static\logo3.png" type="image/x-icon">
+    <link rel="stylesheet" type='text/css' href="..\static\style.css">
+    <!-- <link rel="stylesheet" href="..\static\result.css"> -->
+    <link rel="stylesheet" type='text/css' href="..\static\autocomplete.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" /> -->
+    
+<style type="text/css">
+     .mySlides .col-lg-3{
+  animation: 5s slide-right  ;
+  /*width: 100%;*/
+  
+}
+@keyframes slide-right{
+  0%{
+    
+    transform: rotateY(-90deg);
+  }
+  25%{
+    transform: rotateY(0deg);
+  }
+   75%{
+    transform: rotateY(0deg);
+  }
+  100%{
+    
+    transform: rotateY(90deg);
+  }
+}
+
+
+
+      .photo{
+        border-radius: 25px;
+        border: 5px solid #464545 ;
+          /*box-shadow: 5px 10px #C5C5BF ;*/
+      }
+      
+    </style>
+
+</head>
+
+<body style="background-color: black;">
+    <div><img src="..\static\ticket.jpg" style="z-index:-1; position:absolute; height: 100%; width: 100%; left: 0px;"></img></div>
+    <!-- <header style="position: fixed; left: 20%;  display: flex;">         -->
+    <ul>
+        <li>
+            <a href="#">
+                <div class="icon">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                </div>
+                <div class="name" data-text="Home">Home</div>
+
+            </a>
+
+        </li>
+        <li>
+            <a href="#">
+                <div class="icon">
+                    <i class="fa fa-film" aria-hidden="true"></i>
+                </div>
+                <div class="name" data-text="Movies">Movies</div>
+
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="icon">
+                    <i class="fa fa-television" aria-hidden="true"></i>
+                </div>
+                <div class="name" data-text="TV Shows">TV Shows</div>
+
+            </a>
+
+        </li>
+        <li>
+            <a href="#">
+                <div class="icon">
+                    <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                </div>
+                <div class="name" data-text="Watch Now">Watch Now</div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('team_template')}}">
+                <div class="icon">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                </div>
+                <div class="name" data-text="Team">Team</div>
+
+            </a>
+        </li>
+    </ul>
+<div class="logo">
+    <a href="#"><img src="..\static\logo1.png" style="position:absolute;z-index: 1;left:2%;bottom: 75%;"></img>
+    </a>
+</div>
+<!-- -->
+<form autocomplete="off"  action="{{url_for('getMovieID')}}" method = "POST" id = "form">
+    <div class="autocomplete">
+<div class = "search-box">    
+    <input id = "myInput" type="text" name = 'Name' placeholder="Search Movie...">
+   <button type="submit" style="display: none;"></button>
+    <div class = "search-icon">
+        <i class = "fa fa-search"></i>
+    </div>
+    <div class = "cancel-icon">
+        <i class = "fa fa-times"></i>
+    </div>
+    
+    <div class="search-data">
+    </div>  
+</div>
+</div>
+</form>
+
+<div class="container" style="margin-top: 35%;">
+     
+   <p style="text-align: center;font-size: 60px;color:rgb(173, 111, 85);font-family: Bebas Neue ;border: 5px solid white;border-radius: 18px;">Top Picks</p>
+      <div class="mySlides"  >
+         <div class="row" >
+          <div class="col-lg-3">
+            <img class="photo" src="..\static\popular\1.jpg" style="height:100%; width:100%;">
+          </div>
+          <div class="col-lg-3">
+            <img  class="photo" src="..\static\popular\2.jpg" style="height:100%; width:100%">
+          </div>
+          <div class="col-lg-3">
+            <img  class="photo" src="..\static\popular\3.jpg" style="height:100%; width:100%">
+          </div>
+          <div class="col-lg-3">
+            <img class="photo" src="..\static\popular\4.jpg" style="height:100%; width:100%">
+          </div>
+      </div>
+      </div>
+      <div class="mySlides">
+        <div class="row">
+           <div class="col-lg-3">
+              <img class="photo" src="..\static\popular\5.jpg" style="height:100%; width:100%">
+            </div>
+            <div class="col-lg-3">
+              <img class="photo " src="..\static\popular\6.jpg" style="height:100%; width:100%">
+            </div>
+            <div class="col-lg-3">
+              <img class="photo"  src="..\static\popular\7.jpg" style="height:100%; width:100%">
+            </div>
+            <div class="col-lg-3">
+              <img class="photo"  src="..\static\popular\8.jpg" style="height:100%; width:100%">
+            </div>
+        </div>
+      </div>
+          <div class="mySlides">
+            <div class="row">
+              <div class="col-lg-3">
+                <img  class="photo" src="..\static\popular\9.jpg" style="height:100%; width:100%">
+              </div>
+              <div class="col-lg-3">
+                <img class="photo"  src="..\static\popular\10.jpg" style="height:100%; width:100%">
+              </div>
+              <div class="col-lg-3">
+                <img  class="photo" src="..\static\popular\11.jpg" style="height:100%; width:100%">
+              </div>
+              <div class="col-lg-3">
+                <img  class="photo" src="..\static\popular\12.jpg" style="height:100%; width:100%">
+              </div>
+            </div>
+      </div>
+  </div>
+<div style="height: 100px">
+</div>
+
+<!-- <div style="padding-top: 40%;">
+<h2>{{usr_input}}</h2>-->
+<!-- <main id="main"></main> -->
+  <!-- <div class="container" style="width:80%;">
+    <main id="main"></main>
+</div>
+</div> --> 
+
+<script src = '..\static\script.js'></script>
+<script src = '..\static\animate.js'></script>
+ <script>function autocomplete(inp, arr, limit) {
+
+    /*the autocomplete function takes two arguments,
+    the text field element and an array of possible autocompleted values:*/
+    var currentFocus;
+    limit = limit || 5;
+    /*execute a function when someone writes in the text field:*/
+    inp.addEventListener("input", function (e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false; }
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0, numRes = 0; i < arr.length; i++) {
+
+        /*check if the item starts with the sme letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          if (numRes++ >= limit) {
+            break;
+          }
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function (e) {
+            /*insert the value for the autocomplete text field:*/
+            inp.value = this.getElementsByTagName("input")[0].value;
+            /*close the list of autocompleted values,
+            (or any other open lists of autocompleted values:*/
+            closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+    });
+    /*execute a function presses a key on the keyboard:*/
+    inp.addEventListener("keydown", function (e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+    });
+    function addActive(x) {
+      /*a function to classify an item as "active":*/
+      if (!x) return false;
+      /*start by removing the "active" class on all items:*/
+      removeActive(x);
+      if (currentFocus >= x.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = (x.length - 1);
+      /*add class "autocomplete-active":*/
+      x[currentFocus].classList.add("autocomplete-active");
+    }
+    function removeActive(x) {
+      /*a function to remove the "active" class from all autocomplete items:*/
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove("autocomplete-active");
+      }
+    }
+    function closeAllLists(elmnt) {
+      /*close all autocomplete lists in the document,
+      except the one passed as an argument:*/
+      var x = document.getElementsByClassName("autocomplete-items");
+      for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+          x[i].parentNode.removeChild(x[i]);
+        }
+      }
+    }
+    /*execute a function when someone clicks in the document:*/
+    document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+    });
+  }
+  
+  var movies = {{ movie_list| safe }};  
+  //['Milkha','m.s.dhoni','Tanu weds Manu','Halodhia Choraye Baodhan Khai'];
+  //  'Happy Ending','Hitler Didi','Humshakal','Hero No.1','Holiday: A Soldier Is Never Off Duty','Hum Tum Aur Ghost',
+  //  'Happy New Year','Hungama','Haider','Housefull','Haathi Mera Saathi','Heyy Baby']
+  // {{ test| safe }};
+  
+  console.log(movies);
+  autocomplete(document.getElementById("myInput"), movies);
+  
+
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+
+  var slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 5000); // Change image every 2 seconds
+}
+
+
+
+
+
+
+
+
+  </script>
+<!-- <script src = '..\static\autocomplete.js'></script> -->
+
+<!-- <script src = 'script.js'></script> -->
+    <!-- <script type="text/javascript">
+    window.addEventListener(scroll,function(){
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0 );
+    })
+    </script> -->    
+</body>
+</html>
