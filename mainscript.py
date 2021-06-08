@@ -40,19 +40,19 @@ df['runtime_copy'] = runtime_copy
 # df_1 = df_1.join(df_copy['title'])
 # df_1.drop('index',axis = 1, inplace=True)
 # df_1 = df_1.reset_index()
-list_a = []
-list_b = []
-for i,x in enumerate(df_1['id']):
-    a = (df_1[df_1['id'] == x]['title'][i])
-    list_a.append(a)
-    list_b.append(i)
-list_info = []
-for i,x in enumerate(list_a):
+# list_a = []
+# list_b = []
+# for i,x in enumerate(df_1['id']):
+#     a = (df_1[df_1['id'] == x]['title'][i])
+#     list_a.append(a)
+#     list_b.append(i)
+# list_info = []
+for i,x in enumerate(df_1['title']):
     str_info = df_1[df_1['title'] == x]['cast'][i]
     #print(i,x,str_info)
     dict_info = eval(str_info)
     dict_info = list(dict_info)
-    list_info.append(dict_info)
+    #list_info.append(dict_info)
     df_1.at[i,'cast'] = dict_info    
 
 
@@ -62,7 +62,7 @@ for i,x in enumerate(list_a):
 count = CountVectorizer(stop_words='english')
 count_matrix = count.fit_transform(df['soup'])
 
-cosine_sim2 = cosine_similarity(count_matrix, count_matrix)
+# cosine_sim2 = cosine_similarity(count_matrix, count_matrix)
 
 
 indices = pd.Series(df.index, index=df['title'])
