@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import pandas as pd
 import numpy as np
 import json
@@ -90,6 +90,16 @@ def getMovieList():
     return render_template('home.html', movie_list=movie_list)
 
 @app.route('/result', methods = ['GET','POST'])    
+# def my_function():
+#     if request.method == "POST":
+#         data = {}    # empty dict to store data
+#         data['author'] = request.json['author']
+#         data['release_date'] = request.json['movie_release_date']
+#         print(data)
+#         return render_template('result.html', r_dict = jsonify(data))   
+#     else:
+#         return "<h2>oops</h2>"     
+
 def getMovieID():
 
     if request.method == 'POST': 
@@ -149,10 +159,14 @@ def getMovieID():
             search_cast_el = [i + j for i, j in zip(irm_cast_id, irm_cast_name)]                 
 
         except:
-            return render_template('no_result.html')    
+            return render_template('no_result.html')
+        # data = {}    #empty dict to store data
+        # data['author'] = request.json['author']
+        # data['content'] = request.json['content']
+        
         return render_template('result.html', usr_input=usr_input , movie_id=movie_id, runtime = runtime, movie_names = names, movie_date = dates, g1 = string_x.title(), g2 = string_y.title() , sim_score = sim_score_list, character_list = character_list ,cast_info = search_cast_el)    
-    # style ='border:2px black solid;border-radius:20px;box-shadow:rgba(0,0,0,0.4)'
-    #  height:500px; width:550px;
+ 
+   
 
 @app.route('/team')
 def team_template():
